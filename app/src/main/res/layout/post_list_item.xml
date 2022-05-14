@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
-        android:text="10"
+        android:text="@string/_10"
         app:layout_constraintStart_toEndOf="@+id/like"
         app:layout_constraintTop_toTopOf="@+id/like" />
 
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
-        android:text="5"
+        android:text="@string/_5"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toTopOf="@+id/share"/>
 
@@ -139,7 +139,7 @@
         android:ellipsize="end"
         android:gravity="end"
         android:singleLine="true"
-        android:text="5"
+        android:text="@string/_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/glaz"
         app:layout_constraintTop_toTopOf="@id/glaz" />

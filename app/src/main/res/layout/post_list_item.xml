@@ -4,20 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     android:padding="@dimen/common_spacing"
     tools:context=".MainActivity">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/avatar"
         android:layout_width="@dimen/post_avatar_size"
         android:layout_height="@dimen/post_avatar_size"
         android:contentDescription="@string/avatar_discription"
         app:layout_constrainStart_toStartOf="parent"
-        app:layout_constrainTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:srcCompat="@mipmap/ic_launcher" />
+        app:layout_constrainTop_toTopOf="parent" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -83,7 +80,7 @@
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/common_spacing"
         android:background="color/transpared"
         android:src="@drawable/ic_like_24dp"
         app:layout_constraintEnd_toEndOf="@id/headerBarrier2"
@@ -94,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
-        android:text="@string/_10"
+        android:text="10"
         app:layout_constraintStart_toEndOf="@+id/like"
         app:layout_constraintTop_toTopOf="@+id/like" />
 
@@ -113,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
-        android:text="@string/_5"
+        android:text="5"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toTopOf="@+id/share"/>
 
@@ -139,7 +136,7 @@
         android:ellipsize="end"
         android:gravity="end"
         android:singleLine="true"
-        android:text="@string/_5"
+        android:text="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/glaz"
         app:layout_constraintTop_toTopOf="@id/glaz" />

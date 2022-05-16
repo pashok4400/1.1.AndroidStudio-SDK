@@ -13,8 +13,9 @@
         android:layout_width="@dimen/post_avatar_size"
         android:layout_height="@dimen/post_avatar_size"
         android:contentDescription="@string/avatar_discription"
-        app:layout_constrainStart_toStartOf="parent"
-        app:layout_constrainTop_toTopOf="parent" />
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -81,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        android:background="color/transpared"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_like_24dp"
         app:layout_constraintEnd_toEndOf="@id/headerBarrier2"
         app:layout_constraintTop_toTopOf="@id/headerBarrier2" />
@@ -100,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_share_24dp"
-        android:background="color/transpared"
+        android:background="@android:color/transparent"
         android:layout_marginStart="32dp"
         app:layout_constraintStart_toEndOf="@+id/like"
         app:layout_constraintTop_toTopOf="@+id/like"/>

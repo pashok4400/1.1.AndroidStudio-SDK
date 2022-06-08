@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/avatar"
+        android:id="@+id/post_avatar"
         android:layout_width="@dimen/post_avatar_size"
         android:layout_height="@dimen/post_avatar_size"
         android:contentDescription="@string/avatar_discription"
@@ -19,34 +19,34 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/authorName"
+        android:id="@+id/post_authorName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@id/date"
-        app:layout_constraintEnd_toStartOf="@id/options"
-        app:layout_constraintStart_toEndOf="@+id/avatar"
-        app:layout_constraintTop_toTopOf="@+id/avatar"
+        app:layout_constraintBottom_toTopOf="@id/post_date"
+        app:layout_constraintEnd_toStartOf="@id/post_options"
+        app:layout_constraintStart_toEndOf="@+id/post_avatar"
+        app:layout_constraintTop_toTopOf="@+id/post_avatar"
         android:text="Нетология.Университет интернет проффессий" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/date"
+        android:id="@+id/post_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="@+id/avatar"
-        app:layout_constraintEnd_toEndOf="@+id/authorName"
+        app:layout_constraintBottom_toBottomOf="@+id/post_avatar"
+        app:layout_constraintEnd_toEndOf="@+id/post_authorName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/authorName"
-        app:layout_constraintTop_toBottomOf="@+id/authorName"
+        app:layout_constraintStart_toStartOf="@+id/post_authorName"
+        app:layout_constraintTop_toBottomOf="@+id/post_authorName"
         android:text="21 мая в 18.36 " />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/options"
+        android:id="@+id/post_options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -56,80 +56,80 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/headerBarrier"
+        android:id="@+id/header_barrier"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatar,date,options" />
+        app:constraint_referenced_ids="post_avatar,post_date,post_options" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text"
+        android:id="@+id/post_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/http_netolo_gy_fyb"
         android:autoLink="web"
-        app:layout_constraintTop_toBottomOf="@id/headerBarrier" />
+        app:layout_constraintTop_toBottomOf="@id/header_barrier" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/downBarier"
+        android:id="@+id/text_barrier"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="text"/>
+        app:constraint_referenced_ids="post_text"/>
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/likes"
+        android:id="@+id/post_favorite_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_like_24dp"
-        app:layout_constraintEnd_toEndOf="@id/downBarier"
-        app:layout_constraintTop_toTopOf="@id/downBarier" />
+        app:layout_constraintEnd_toEndOf="@id/text_barrier"
+        app:layout_constraintTop_toTopOf="@id/text_barrier" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/countLikes"
+        android:id="@+id/post_favorite_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
         android:text="10"
-        app:layout_constraintStart_toEndOf="@+id/likes"
-        app:layout_constraintTop_toTopOf="@+id/likes" />
+        app:layout_constraintStart_toEndOf="@+id/post_favorite_button"
+        app:layout_constraintTop_toTopOf="@+id/post_favorite_button" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/share"
+        android:id="@+id/post_share_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_share_24dp"
+        android:layout_marginStart="40dp"
         android:background="@android:color/transparent"
-        android:layout_marginStart="32dp"
-        app:layout_constraintStart_toEndOf="@+id/likes"
-        app:layout_constraintTop_toTopOf="@+id/likes"/>
+        android:src="@drawable/ic_share_24dp"
+        app:layout_constraintStart_toEndOf="@+id/post_favorite_button"
+        app:layout_constraintTop_toTopOf="@+id/post_favorite_button" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/countShare"
+        android:id="@+id/post_share_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
         android:text="5"
-        app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toTopOf="@+id/share"/>
+        app:layout_constraintStart_toEndOf="@id/post_share_button"
+        app:layout_constraintTop_toTopOf="@+id/post_share_button"/>
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/glaz"
+        android:id="@+id/post_view_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="36dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_visibility_24dp"
-        app:layout_constraintEnd_toEndOf="@id/countGlaz"
-        app:layout_constraintTop_toBottomOf="@id/downBarier" />
+        app:layout_constraintEnd_toEndOf="@id/post_view"
+        app:layout_constraintTop_toBottomOf="@id/text_barrier" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/countGlaz"
+        android:id="@+id/post_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -138,9 +138,9 @@
         android:ellipsize="end"
         android:gravity="end"
         android:singleLine="true"
-        android:text="5"
+        android:text="999"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/glaz"
-        app:layout_constraintTop_toTopOf="@id/glaz" />
+        app:layout_constraintStart_toEndOf="@id/post_view_text"
+        app:layout_constraintTop_toTopOf="@id/post_view_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

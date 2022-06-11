@@ -14,9 +14,9 @@
 .cxx
 local.properties
 
-reserve.md
+Thumbs.db*
+.DS_Store*
 HELP.md
-.gradle
 build/
 
 ### STS ###
@@ -31,15 +31,8 @@ build/
 ### IntelliJ IDEA ###
 .idea
 *.iws
-*.iml
 *.ipr
 out/
-
-### Android Studio ###
-local.properties
-captures/
-.externalNativeBuild
-.cxx
 
 ### NetBeans ###
 /nbproject/private/
@@ -60,7 +53,7 @@ captures/
 *.tar.gz
 *.rar
 
-### Gradle ###
+###
 !gradle/wrapper/gradle-wrapper.jar
-
-netology.svg
+!/src/main/
+!/src/test/

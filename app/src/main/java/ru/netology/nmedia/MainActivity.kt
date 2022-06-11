@@ -1,11 +1,12 @@
 package ru.netology.nmedia
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.DrawableRes
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     @DrawableRes
     private fun getLikeIconResId(liked: Boolean) =
-        if (liked) R.drawable.ic_favorite_24dp else R.drawable.ic_like_24dp
+        if (liked) R.drawable.ic_favorite_like else R.drawable.ic_like_24dp
 
     private fun countNumbers(likes: Int):String{
         return when(likes){

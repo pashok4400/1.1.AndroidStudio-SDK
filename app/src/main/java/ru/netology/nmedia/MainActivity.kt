@@ -52,8 +52,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     @DrawableRes
-    private fun getLikeIconResId(liked: Boolean) =
+    private fun getLikeIconResId(liked: Boolean): Int =
         if (liked) R.drawable.ic_favorite_like else R.drawable.ic_like_24dp
+
+
 
     private fun countNumbers(likes: Int):String{
         return when(likes){

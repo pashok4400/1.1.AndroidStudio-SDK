@@ -7,56 +7,63 @@ import androidx.annotation.DrawableRes
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(
-            id = 1L,
-            author = "Нетология. Университет интернет-профессий будущего",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
-            published = "21 мая в 18:36",
-            likedByMe = false,
-            countLikes = 9999u,
-            countShare = 1999u,
-            countGlaz = 999999u
+        var post = Post(
+            id = 1,
+            author = "Pavel",
+            content = "Sotnikov",
+            published = "07.05.2022",
+            likes = 999
         )
 
-        with(binding) {
-            avatar.setImageResource(R.drawable.ic_launcher_foreground)
-            authorName.text = post.author
-            date.text = post.published
-            text.text = post.content
-            countLikes.text = post.uIntToString(post.countLikes)
-            countShare.text = post.uIntToString(post.countShare)
-            countGlaz.text = post.uIntToString(post.countGlaz)
-
-            likes.setOnClickListener {
-                post.likedByMe = !post.likedByMe
-                var imageResId = R.drawable.ic_like_24dp
-                if (post.likedByMe) {
-                    imageResId = R.drawable.ic_favorite_24dp
-                    post.countLikes++
-                } else {
-                    imageResId = R.drawable.ic_like_24dp
-                    post.countLikes--
-                }
-                likes.setImageResource(imageResId)
-                countLikes.text = post.uIntToString(post.countLikes)
+        binding.render(post)
+        binding.postFavoriteButton.setOnClickListener {
+            post.likedByMe = !post.likedByMe
+            post = if(post.likedByMe){
+                post.copy(likes = post.likes + 1)
+            } else {
+                post.copy(likes = post.likes - 1)
             }
-
-            share.setOnClickListener {
-                post.countShare++
-                countShare.text = post.uIntToString(post.countShare)
-            }
-
-            glaz.setOnClickListener {
-                post.countGlaz++
-                countGlaz.text = post.uIntToString(post.countGlaz)
-            }
+            binding.render(post)
+            binding.postFavoriteButton.setImageResource(getLikeIconResId(post.likedByMe))
         }
+        binding.postShareButton.setOnClickListener{
+            post = post.copy(shares = post.shares + 100)
+            binding.render(post)
+        }
+        setContentView(binding.root)
+    }
 
+    private fun ActivityMainBinding.render(post: Post) {
+        postAuthorName.text = post.author
+        postText.text = post.content
+        postDate.text = post.published
+        postFavoriteText.text = countNumbers(post.likes)
+        postShareText.text = countNumbers(post.shares)
+        postFavoriteButton.setImageResource(getLikeIconResId(post.likedByMe))
+    }
+
+    @DrawableRes
+    private fun getLikeIconResId(liked: Boolean) =
+        if (liked) R.drawable.ic_favorite_24dp else R.drawable.ic_like_24dp
+
+    private fun countNumbers(likes: Int):String{
+        return when(likes){
+            in 1..999 -> "$likes"
+            in 1000..1099 -> "${likes/1000}K"
+            in 1100..9999 -> "${likes/1000}.${likes/100%10}K"
+            in 10000..999999 -> "${likes/1000}K"
+            in 1_000_000..1_099_999 -> "${likes/1000000}M"
+            in 1_000_000..9_999_999 -> "${likes/1000_000}.${likes/1000_000%10}M"
+            in 10_000_000..99_999_999 -> "${likes/1000000}M"
+            else -> ""
+        }
     }
 }

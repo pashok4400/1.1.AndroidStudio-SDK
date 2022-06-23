@@ -5,19 +5,21 @@ import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository {
+    private var nextId = GENERATED_POST_AMOUNT.toLong()
+
     private val posts
         get() = checkNotNull(data.value) {
             "Data value not be null"
         }
 
     override val data = MutableLiveData(
-        List(10) { index ->
+        List(GENERATED_POST_AMOUNT) { index ->
             Post(
                 id = index + 1L,
                 author = "Netology",
                 content = "Some random content $index",
-                published = "04.14.2022",
-                likes = 111
+                published = "15.05.2022",
+                likes = 999
             )
         }
     )
@@ -25,13 +27,10 @@ class InMemoryPostRepository : PostRepository {
     override fun like(postId: Long) {
         data.value = posts.map {
             if (it.id != postId) it
-            else it.copy(likedByMe = !it.likedByMe)
-        }
-        data.value = posts.map {
-            if (it.id == postId) {
-                if (it.likedByMe) it.copy(likes = it.likes + 1)
-                else it.copy(likes = it.likes - 1)
-            } else it
+            else {
+                if (it.likedByMe) it.copy(likes = it.likes - 1, likedByMe = !it.likedByMe)
+                else it.copy(likes = it.likes + 1, likedByMe = !it.likedByMe)
+            }
         }
     }
 
@@ -41,4 +40,31 @@ class InMemoryPostRepository : PostRepository {
             else it.copy(shares = it.shares + 10)
         }
     }
+
+    override fun delete(postId: Long) {
+        data.value = posts.filter { it.id != postId }
+    }
+
+    override fun save(post: Post) {
+        if (post.id == PostRepository.NEW_POST_ID) insert(post) else update(post)
+    }
+
+    private fun insert(post:Post){
+        data.value = listOf(
+            post.copy(
+                id =++nextId
+            )
+        ) + posts
+    }
+
+    private fun update(post: Post) {
+        data.value = posts.map{
+            if(it.id == post.id) post else it
+        }
+    }
+
+    private companion object {
+        const val GENERATED_POST_AMOUNT = 1000
+    }
+
 }

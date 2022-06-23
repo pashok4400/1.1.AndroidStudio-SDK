@@ -1,30 +1,28 @@
 package ru.netology.nmedia.data.impl
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.annotation.DrawableRes
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.nmedia.MainActivity
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.PostBinding
 import ru.netology.nmedia.dto.Post
-import java.util.*
-import kotlin.properties.Delegates
-import kotlin.reflect.KFunction1
-import kotlin.collections.List as List1
 
 internal class PostsAdapter(
-    private val onLikeClicked: KFunction1<ru.netology.nmedia.dto.Post, Unit>,
-    private val onShareClicked: KFunction1<ru.netology.nmedia.dto.Post, Unit>
+    private val interactionsListener: PostInteractionsListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = PostBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding, interactionsListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -32,17 +30,47 @@ internal class PostsAdapter(
     }
 
     inner class ViewHolder(
-        private val binding: PostBinding
+        private val binding: PostBinding,
+        listener: PostInteractionsListener
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(post: Post) = with(binding) {
-            postAuthorName.text = post.author
-            postText.text = post.content
-            postDate.text = post.published
-            postFavoriteText.text = countNumbers(post.likes)
-            postShareText.text = countNumbers(post.shares)
-            postFavoriteButton.setImageResource(getLikeIconResId(post.likedByMe))
-            postFavoriteButton.setOnClickListener { onLikeClicked(post) }
-            postShareButton.setOnClickListener { onShareClicked(post) }
+
+        private lateinit var post: Post
+
+        private val popupMenu by lazy {
+            PopupMenu(itemView.context, binding.postOptions).apply {
+                inflate(R.menu.options_post)
+                setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.remove -> {
+                            listener.onDeleteClicked(post)
+                            true
+                        }
+                        R.id.edit ->{
+                            listener.onEditClicked(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+        }
+
+        init {
+            binding.postShareButton.setOnClickListener{listener.onShareClicked(post)}
+            binding.postFavoriteButton.setOnClickListener{listener.onLikeClicked(post)}
+        }
+
+        fun bind(post: Post) {
+            this.post = post
+            with(binding) {
+                postAuthorName.text = post.author
+                postText.text = post.content
+                postDate.text = post.published
+                postFavoriteText.text = countNumbers(post.likes)
+                postShareText.text = countNumbers(post.shares)
+                postFavoriteButton.setImageResource(getLikeIconResId(post.likedByMe))
+                postOptions.setOnClickListener { popupMenu.show() }
+            }
         }
 
         private fun countNumbers(likes: Int): String {
@@ -61,20 +89,13 @@ internal class PostsAdapter(
 
     @DrawableRes
     private fun getLikeIconResId(liked: Boolean) =
-        if (liked) R.drawable.ic_favorite_like else R.drawable.ic_like_24dp
-
-    fun ActivityMainBinding.render(list: List<Post>?) {
-
-    }
-
-
-    }
+        if (liked) R.drawable.ic_favorite_24dp else R.drawable.ic_like_24dp
 
     private object DiffCallback : DiffUtil.ItemCallback<Post>() {
 
         override fun areItemsTheSame(oldItem: Post, newItem: Post) = oldItem.id == newItem.id
 
-        @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: Post, newItem: Post) = oldItem == newItem
 
     }
+}

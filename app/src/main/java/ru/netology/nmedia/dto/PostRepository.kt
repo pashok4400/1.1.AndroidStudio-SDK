@@ -1,7 +1,6 @@
-package ru.netology.nmedia.data
+package ru.netology.nmedia.dto
 
 import androidx.lifecycle.LiveData
-import ru.netology.nmedia.dto.Post
 
 interface PostRepository {
     val data: LiveData<List<Post>>

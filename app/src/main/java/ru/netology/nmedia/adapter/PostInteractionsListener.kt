@@ -1,6 +1,6 @@
-package ru.netology.nmedia.data.impl
+package ru.netology.nmedia.adapter
 
-import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.data.Post
 
 interface PostInteractionsListener {
     fun onLikeClicked(post:Post)

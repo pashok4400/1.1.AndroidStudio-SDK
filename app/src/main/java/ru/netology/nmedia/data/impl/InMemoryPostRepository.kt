@@ -1,8 +1,8 @@
 package ru.netology.nmedia.data.impl
 
 import androidx.lifecycle.MutableLiveData
+import ru.netology.nmedia.data.Post
 import ru.netology.nmedia.data.PostRepository
-import ru.netology.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository {
     private var nextId = GENERATED_POST_AMOUNT.toLong()
@@ -19,7 +19,7 @@ class InMemoryPostRepository : PostRepository {
                 author = "Netology",
                 content = "Some random content $index",
                 published = "15.05.2022",
-                likes = 999
+                likes = 111
             )
         }
     )

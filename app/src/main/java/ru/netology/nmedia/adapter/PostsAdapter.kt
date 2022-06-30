@@ -1,4 +1,4 @@
-package ru.netology.nmedia.data.impl
+package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.MainActivity
 import ru.netology.nmedia.R
+import ru.netology.nmedia.data.Post
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.PostBinding
-import ru.netology.nmedia.dto.Post
 
 internal class PostsAdapter(
     private val interactionsListener: PostInteractionsListener
@@ -58,6 +58,7 @@ internal class PostsAdapter(
         init {
             binding.postShareButton.setOnClickListener{listener.onShareClicked(post)}
             binding.postFavoriteButton.setOnClickListener{listener.onLikeClicked(post)}
+            binding.postOptions.setOnClickListener { popupMenu.show() }
         }
 
         fun bind(post: Post) {
@@ -66,10 +67,10 @@ internal class PostsAdapter(
                 postAuthorName.text = post.author
                 postText.text = post.content
                 postDate.text = post.published
-                postFavoriteText.text = countNumbers(post.likes)
-                postShareText.text = countNumbers(post.shares)
-                postFavoriteButton.setImageResource(getLikeIconResId(post.likedByMe))
-                postOptions.setOnClickListener { popupMenu.show() }
+                postFavoriteButton.text = countNumbers(post.likes)
+                postShareButton.text = countNumbers(post.shares)
+                postFavoriteButton.isChecked = post.likedByMe
+//                postFavoriteButton.setButtonDrawable(getLikeIconResId(post.likedByMe))
             }
         }
 
@@ -89,7 +90,7 @@ internal class PostsAdapter(
 
     @DrawableRes
     private fun getLikeIconResId(liked: Boolean) =
-        if (liked) R.drawable.ic_favorite_24dp else R.drawable.ic_like_24dp
+        if (liked) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_border_24dp
 
     private object DiffCallback : DiffUtil.ItemCallback<Post>() {
 

@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:hint="Text"
+        android:hint="@string/post_text"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:padding="16dp"
@@ -42,12 +42,12 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:background="@android:color/transparent"
-        android:contentDescription="edit"
+        android:contentDescription="@string/menu_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/contentEditText"
         app:layout_constraintTop_toTopOf="@+id/contentEditText"
-        app:srcCompat="@drawable/ic_baseline_send_24" />
+        app:srcCompat="@drawable/ic_save_24dp" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/toolsMidBarrier"
@@ -70,8 +70,8 @@
         android:id="@+id/constantTextEditView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="post"
-        android:text="post"
+        tools:text="@string/edit_post_text"
+        android:text="@string/edit_post_text"
         app:layout_constraintBottom_toTopOf="@+id/contentTextView"
         app:layout_constraintEnd_toStartOf="@+id/closeButton"
         app:layout_constraintStart_toEndOf="@+id/editImageView"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolsTopBarrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/contentTextView"
-        android:contentDescription="icon"
+        android:contentDescription="@string/edit_icon"
         app:srcCompat="@drawable/ic_edit_24dp"/>
 
     <ImageButton
@@ -101,7 +101,7 @@
         app:layout_constraintStart_toEndOf="@+id/contentTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_clear_24dp"
-        android:contentDescription="close" />
+        android:contentDescription="@string/close_edit" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/editGroup"

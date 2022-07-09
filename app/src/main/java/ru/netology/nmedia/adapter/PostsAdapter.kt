@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.DrawableRes
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -59,10 +58,6 @@ internal class PostsAdapter(
         init {
             binding.postShareButton.setOnClickListener{listener.onShareClicked(post)}
             binding.postFavoriteButton.setOnClickListener{listener.onLikeClicked(post)}
-            binding.videoBanner.setOnClickListener{
-                listener.onPlayVideoClicked(post)
-            }
-
             binding.postOptions.setOnClickListener { popupMenu.show() }
         }
 
@@ -74,9 +69,11 @@ internal class PostsAdapter(
                 postDate.text = post.published
                 postFavoriteButton.text = countNumbers(post.likes)
                 postShareButton.text = countNumbers(post.shares)
-                videoGroup.isVisible = post.video != null
+                postFavoriteButton.isChecked = post.likedByMe
+//                postFavoriteButton.setButtonDrawable(getLikeIconResId(post.likedByMe))
             }
         }
+
         private fun countNumbers(likes: Int): String {
             return when (likes) {
                 in 1..999 -> "$likes"

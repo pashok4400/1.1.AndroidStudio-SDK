@@ -10,6 +10,5 @@ data class Post(
     val published: String,
     val likes:Int = 0,
     val shares:Int = 0,
-    var likedByMe: Boolean = false,
-    val video:String? = "https://www.youtube.com/watch?v=InI-4QFOA-M"
+    var likedByMe: Boolean = false
 )

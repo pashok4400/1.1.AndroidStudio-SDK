@@ -9,6 +9,4 @@
     <string name="close_edit">Закрыть редактирование</string>
     <string name="edit_post_text">Редактировать пост</string>
     <string name="edit_icon">Редактировать</string>
-    <string name="save_content">Сохранить</string>
-    <string name="add_new_post">Добавить новый пост</string>
 </resources>

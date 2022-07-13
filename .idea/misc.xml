@@ -24,9 +24,13 @@
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/drawable/ic_views_24dp.xml" value="0.2505" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/drawable/ic_visibility_24dp.xml" value="0.2505" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/app_activity.xml" value="0.1816123188405797" />
+        <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/feed_fragment.xml" value="0.1816123188405797" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/intent_handler_activity.xml" value="0.1816123188405797" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/post.xml" value="0.264" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/post_content_activity.xml" value="0.1816123188405797" />
+        <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/post_content_fragment.xml" value="0.1816123188405797" />
+        <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/post_fragment.xml" value="0.1369535519125683" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/layout/post_list_item.xml" value="0.4" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user1994/AndroidStudioProjects/Nmedia/app/src/main/res/menu/options_post.xml" value="0.5" />

@@ -13,7 +13,6 @@ class PostViewModel:ViewModel(), PostInteractionsListener {
     val data by repository::data
     val navigateToPostContentScreenEvent = SingleLiveEvent<String>()
     val navigateToPostScreenEvent = SingleLiveEvent<Long>()
-    //    val sharePostContent = SingleLiveEvent<String>()
     val currentPost = MutableLiveData<Post?>(null)
 
     fun onSaveButtonClick(content:String){

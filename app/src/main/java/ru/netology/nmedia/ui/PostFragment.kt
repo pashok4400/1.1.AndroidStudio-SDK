@@ -47,7 +47,7 @@ class PostFragment : Fragment() {
             viewModel.onSaveButtonClick(newPostContent)
         }
 
-        viewModel.navigateToPostContentScreenEvent.observe(this) { initialContent ->
+        viewModel.navigateToPostContentScreenEvent.observe(viewLifecycleOwner) { initialContent ->
             val direction = PostFragmentDirections.fromPostToPostContentFragment(initialContent)
             findNavController().navigate(direction)
         }

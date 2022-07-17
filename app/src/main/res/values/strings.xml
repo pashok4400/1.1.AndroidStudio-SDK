@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name"> NMedia</string>
+    <string name="app_name">NMedia</string>
     <string name="nmedia">NMedia!</string>
-    <string name="avatar_discription">Author avatar</string>
-    <string name="http_netolo_gy_fyb"><![CDATA[Привет, это новая Нетология. Когда-то нетология начиналась с интенсивов по онлайн-маректингу. Затем появились курсы по дизайну, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия - помочь встать на путь роста и начать цепочку перемен -> http://netolo.gy/fyb]]></string>
+    <string name="post_avatar_description">Avatar</string>
+    <string name="remove">Remove</string>
+    <string name="post_text">Post Text</string>
+    <string name="menu_edit">Edit</string>
+    <string name="close_edit">Close Edit</string>
+    <string name="edit_post_text">Edit Post</string>
+    <string name="edit_icon">Edit Icon</string>
+    <string name="save_content">Save</string>
+    <string name="add_new_post">Add New Post</string>
 </resources>
